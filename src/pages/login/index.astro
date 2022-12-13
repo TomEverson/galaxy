@@ -1,0 +1,18 @@
+---
+import MainLayout from "../../layout/MainLayout.astro";
+import { Login } from "../../components/Login";
+import Head from "../../layout/Head.astro";
+import { getUser, redirectUser } from "@astro-auth/core";
+
+const user = getUser({client: Astro})
+
+if(user){
+    return redirectUser('/')
+}
+
+---
+<Head title="Login"/>
+
+<MainLayout>
+<Login client:load />
+</MainLayout>
