@@ -2,9 +2,8 @@ import { signIn } from "@astro-auth/client";
 import { useState } from "react";
 
 export const Login: React.FC = () => {
-
-  const [email, setEmail] = useState<string>('')
-  const [password, setPassword] = useState<string>('')
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
   return (
     <>
@@ -35,7 +34,7 @@ export const Login: React.FC = () => {
                   required
                   className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                   placeholder="Email address"
-                  onChange={(e:any)=> setEmail(e.target.value)}
+                  onChange={(e: any) => setEmail(e.target.value)}
                 />
               </div>
               <div>
@@ -50,12 +49,10 @@ export const Login: React.FC = () => {
                   required
                   className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                   placeholder="Password"
-                  onChange={(e:any)=> setPassword(e.target.value)}
+                  onChange={(e: any) => setPassword(e.target.value)}
                 />
               </div>
             </div>
-
-           
 
             <div>
               <button
