@@ -2,13 +2,7 @@ import AstroAuth from "@astro-auth/core";
 import { CredentialProvider } from "@astro-auth/providers";
 import clientPromise from "../../../../lib/mongodb";
 import { passwordHash, passwordCheck } from "../../../../utils/password";
-
-type User = {
-  _id?: string,
-  email: string,
-  password: string,
-}
-
+import type { User } from "../../../../types/user";
 
 const client = await clientPromise;
 const db = client.db('spaceship');

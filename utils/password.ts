@@ -1,4 +1,4 @@
-//@ts-ignore
+//@ts-expect-error
 import * as bcrypt from 'bcryptjs'
 
 export async function passwordHash(password:string) {
