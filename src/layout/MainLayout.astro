@@ -1,9 +1,20 @@
 ---
+
 import "../style/index.css";
 ---
 
 <body>
-<main class="flex min-h-screen flex-col items-center justify-center bg-teal-300">
+<main class="wrapper flex min-h-screen flex-col items-center justify-center bg-teal-300" id="swup">
     <slot />
 </main>
+
+<script>
+import Swup from "swup";
+import SwupHeadPlugin from "@swup/head-plugin";
+
+
+const swup = new Swup({
+  plugins: [new SwupHeadPlugin()],
+});
+</script>
 </body>

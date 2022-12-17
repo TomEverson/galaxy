@@ -16,6 +16,8 @@ const user = getUser({client: Astro})
 		</h1>
 		<div class="flex flex-col items-center gap-2">
 			{user?<p class="text-white text-2xl">Hello {user?.email}</p>:<a href="/login" class="text-white text-2xl border p-4 rounded-lg">Log-In To See Message</a>}
+			<a class="mt-8 text-white text-2xl border p-4 rounded-lg"  href="/dashboard">Dashboard</a>
+			<a class="mt-8 text-white text-2xl border p-4 rounded-lg"  href="/">Docs</a>
 		</div>
 	  </div>
 </MainLayout>
