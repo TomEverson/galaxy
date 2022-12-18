@@ -1,10 +1,17 @@
 ---
 import Head from "../layout/Head.astro";
 import MainLayout from "../layout/MainLayout.astro";
-import { getUser } from "@astro-auth/core";
+import { jwtDecode } from "../../utils/jwt";
 
+let user: any = false
 
-const user = getUser({client: Astro})
+const jwt = Astro.cookies.get("token").value
+
+if (jwt){
+	user = await jwtDecode(jwt)
+}
+
+console.log(user)
 
 ---
 

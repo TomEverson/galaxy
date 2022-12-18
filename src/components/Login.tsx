@@ -1,9 +1,16 @@
-import { signIn } from "@astro-auth/client";
-import { useState } from "react";
+import { useState } from "preact/hooks"
+import axios from "axios";
 
-export const Login: React.FC = () => {
+export const Login: preact.FunctionComponent = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+
+  const login = async() => {
+    const req = await axios.post('/api/auth/oauth', {email, password}, {withCredentials: true})
+    if (req.status = 200) {
+      window.location.href = "/";
+    }
+  }
 
   return (
     <>
@@ -16,7 +23,7 @@ export const Login: React.FC = () => {
               alt="Astro"
             />
             <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
-              Sign in to your account
+              Log in to your account
             </h2>
           </div>
           <div className="mt-8 space-y-6">
@@ -58,15 +65,7 @@ export const Login: React.FC = () => {
               <button
                 type="submit"
                 className="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                onClick={() => {
-                  signIn({
-                    provider: "credential",
-                    login: {
-                      email: email,
-                      password: password,
-                    },
-                  });
-                }}
+                onClick={() => login()}
               >
                 Log In
               </button>

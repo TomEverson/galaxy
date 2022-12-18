@@ -1,11 +1,11 @@
 ---
 import MainLayout from "../../layout/MainLayout.astro";
-import { Login } from "../../components/Login";
 import Head from "../../layout/Head.astro";
 
 ---
-<Head title="Login"/>
+<Head title="Success"/>
 
 <MainLayout>
-<Login client:load />
+<h1 class="text-3xl">You Have Create The Account</h1>
+<a class="text-blue-400 text-xl" href="/login">Login</a>
 </MainLayout>
