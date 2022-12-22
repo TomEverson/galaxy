@@ -1,13 +1,12 @@
 import type { APIRoute } from "astro";
 import { passwordHash } from "../../../../utils/password";
 import { PrismaClient } from "@prisma/client";
-import type { User } from "../../../../types/user";
 import sgMail from "../../../../lib/sendgrid";
 const prisma = new PrismaClient();
 
 export const post: APIRoute = async ({ request }) => {
   const sender = import.meta.env.SENDGRID_EMAIL;
-  const body: User = await request.json();
+  const body = await request.json();
   const password = await passwordHash(body.password);
   const code = Math.floor(100000 + Math.random() * 900000);
   const user = await prisma.user.findFirst({ where: { email: body.email } });

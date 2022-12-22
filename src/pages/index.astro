@@ -2,16 +2,15 @@
 import Head from "../layout/Head.astro";
 import MainLayout from "../layout/MainLayout.astro";
 import { jwtDecode } from "../../utils/jwt";
+import type { User } from "@prisma/client";
 
-let user: any = false;
+let user: User | undefined;
 
 const jwt = Astro.cookies.get("token").value;
 
 if (jwt) {
   user = await jwtDecode(jwt);
 }
-
-console.log(user);
 ---
 
 <Head title="ATM stack" />
@@ -23,7 +22,7 @@ console.log(user);
       class="text-5xl font-extrabold tracking-tight text-white sm:text-[5rem] text-center"
     >
       Create Fast Website With <br />
-      <span class="text-[hsl(280,100%,70%)]">Spaceship</span> Template🚀
+      <span class="text-[hsl(280,100%,70%)]">Galaxy</span> Template🚀
     </h1>
     <div class="flex flex-row items-center gap-4">
       {

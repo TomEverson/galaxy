@@ -1,10 +1,9 @@
 import type { APIRoute } from "astro";
 import { PrismaClient } from "@prisma/client";
-import type { Session } from "../../../../types/user";
 const prisma = new PrismaClient();
 
 export const post: APIRoute = async ({ request }) => {
-  const body: Session = await request.json();
+  const body = await request.json();
   const session = await prisma.session.findFirst({
     where: { email: body.email },
   });
