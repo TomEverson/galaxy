@@ -25,3 +25,5 @@ If you need relational database, I recommened [Planetscale](https://planetscale.
 ## Data-Fetching
 
 [TanStack-Query](https://tanstack.com/query/v4)
+
+![Image](https://github.com/TomEverson/galaxy/blob/main/public/bg.png)
