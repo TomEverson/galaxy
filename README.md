@@ -2,6 +2,8 @@
 
 ## Ship Fast Website To The User With Just A Sprinkle Of Javascript
 
+![Image](https://github.com/TomEverson/galaxy/blob/main/public/bg.png)
+
 ### The Spaceship Stack
 
 1. Astro
@@ -25,5 +27,3 @@ If you need relational database, I recommened [Planetscale](https://planetscale.
 ## Data-Fetching
 
 [TanStack-Query](https://tanstack.com/query/v4)
-
-![Image](https://github.com/TomEverson/galaxy/blob/main/public/bg.png)
