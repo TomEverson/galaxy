@@ -15,7 +15,7 @@ export const post: APIRoute = async ({ request }) => {
   }
   if (body.code == session.code) {
     await prisma.user.create({
-      data: { email: body.email, password: session.password },
+      data: { email: session.email, password: session.password },
     });
     await prisma.session.delete({ where: { id: session.id } });
     return new Response(JSON.stringify({ message: "Success" }), {

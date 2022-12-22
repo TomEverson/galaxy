@@ -1,16 +1,21 @@
-import { useState } from "preact/hooks"
+import { useState } from "preact/hooks";
+import { Discord } from "./Discord";
 import axios from "axios";
 
 export const Login: preact.FunctionComponent = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const login = async() => {
-    const req = await axios.post('/api/auth/oauth', {email, password}, {withCredentials: true})
-    if (req.status = 200) {
+  const login = async () => {
+    const req = await axios.post(
+      "/api/auth/oauth",
+      { email, password },
+      { withCredentials: true }
+    );
+    if ((req.status = 200)) {
       window.location.href = "/";
     }
-  }
+  };
 
   return (
     <>
@@ -69,6 +74,7 @@ export const Login: preact.FunctionComponent = () => {
               >
                 Log In
               </button>
+              <Discord />
             </div>
           </div>
         </div>

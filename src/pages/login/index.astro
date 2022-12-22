@@ -1,11 +1,11 @@
 ---
 import MainLayout from "../../layout/MainLayout.astro";
-import { Login } from "../../components/Login";
+import { Login } from "../../components/auth/Login";
 import Head from "../../layout/Head.astro";
-
 ---
-<Head title="Login"/>
+
+<Head title="Login" />
 
 <MainLayout>
-<Login client:load />
+  <Login client:load />
 </MainLayout>

@@ -1,17 +1,24 @@
 ---
 import Head from "../layout/Head.astro";
+import { Logout } from "../components/auth/Logout";
 import MainLayout from "../layout/MainLayout.astro";
-
 ---
 
 <Head title="Dashboard" />
 <MainLayout>
-	<div class="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-		<h1 class="text-5xl font-extrabold tracking-tight text-white sm:text-[5rem] text-center">
-		  This is a Pre-rendered <br> <span class="text-[hsl(280,100%,70%)]">Dashboard🛒</span>
-		</h1>
-		<div class="flex flex-col items-center gap-2">
-            <a class="mt-8 text-white text-2xl border p-4 rounded-lg" href="/">Home</a>
-		</div>
-	  </div>
+  <div
+    class="container flex flex-col items-center justify-center gap-12 px-4 py-16"
+  >
+    <h1
+      class="text-5xl font-extrabold tracking-tight text-white sm:text-[5rem] text-center"
+    >
+      This is a <br />
+      <span class="text-[hsl(280,100%,70%)]">Dashboard🛒</span>
+    </h1>
+    <div class="flex flex-col items-center gap-2">
+      <a class="mt-8 text-white text-2xl border p-4 rounded-lg" href="/">Home</a
+      >
+      <Logout client:load />
+    </div>
+  </div>
 </MainLayout>
