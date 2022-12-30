@@ -8,9 +8,11 @@ export const post: APIRoute = async () => {
     maxAge: 0,
   });
   return new Response(JSON.stringify({ message: "Success" }), {
-    status: 200,
+    status: 302,
+    // prettier-ignore
     headers: {
       "Set-Cookie": Cookie,
+      "Location": "/",
     },
   });
 };

@@ -1496,6 +1496,13 @@
   resolved "https://registry.npmjs.org/@swup/plugin/-/plugin-1.0.1.tgz"
   integrity sha512-QrTGn1DLx+50CNsk6oGzUFnyNyLkDK6iLb032qKImmAXS+0Dd1cwa8cSGvJ+I27J4qR8y6oJNurgHIEc6ZCTrg==
 
+"@swup/scripts-plugin@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@swup/scripts-plugin/-/scripts-plugin-1.1.0.tgz#7c4b5d764e82386688a41e8d00211cef4bc2750b"
+  integrity sha512-/2V5cUrmzxxZH91bBk0WjsWMJhjKhb32wZ41Sw/HXAUf2gLvqebvW6Lw98HJsagNXxVqqjmzTDIfdbHGwVsG/w==
+  dependencies:
+    "@swup/plugin" "^1.0.1"
+
 "@tootallnate/once@2":
   version "2.0.0"
   resolved "https://registry.npmjs.org/@tootallnate/once/-/once-2.0.0.tgz"

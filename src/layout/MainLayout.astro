@@ -13,9 +13,10 @@ import "../style/index.css";
   <script>
     import Swup from "swup";
     import SwupHeadPlugin from "@swup/head-plugin";
+    import SwupScriptsPlugin from "@swup/scripts-plugin";
 
     const swup = new Swup({
-      plugins: [new SwupHeadPlugin()],
+      plugins: [new SwupHeadPlugin(), new SwupScriptsPlugin()],
     });
   </script>
 </body>

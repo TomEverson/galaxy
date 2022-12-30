@@ -5,7 +5,12 @@ import { jwtSign } from "../../../../../utils/jwt";
 
 const prisma = new PrismaClient();
 
-export const get: APIRoute = async ({ request, redirect }) => {
+export const post: APIRoute = async ({ redirect }) => {
+  const url = import.meta.env.DISCORD_OAUTH_URL;
+  return redirect(url);
+};
+
+export const get: APIRoute = async ({ request }) => {
   const code: string = new URL(request.url).search.slice(6);
   const id = import.meta.env.DISCORD_CLIENT_ID;
   const secret = import.meta.env.DISCORD_CLIENT_SECRET;
@@ -40,30 +45,26 @@ export const get: APIRoute = async ({ request, redirect }) => {
       return res;
     } catch (error) {
       console.log(error);
-      return new Response(JSON.stringify({ message: "Success" }), {
+      return new Response(JSON.stringify({ message: "Error" }), {
         status: 404,
       });
     }
   };
   const check = await fetch();
-  const payload = { id: check, email: check.email };
+  const payload = { id: check.id, email: check.email };
   const user = await prisma.user.findFirst({ where: { email: check.email } });
   const token: string = await jwtSign(payload);
   if (!user) {
     await prisma.user.create({ data: { email: check.email, password: null } });
-    return (
-      new Response(JSON.stringify({ message: "Success" }), {
-        status: 200,
-        headers: { "Set-Cookie": token },
-      }),
-      redirect("/")
-    );
+    return new Response(JSON.stringify({ message: "Success" }), {
+      status: 302,
+      // prettier-ignore
+      headers: { "Set-Cookie": token, "Location": "/"  },
+    });
   }
-  return (
-    new Response(JSON.stringify({ message: "Success" }), {
-      status: 200,
-      headers: { "Set-Cookie": token },
-    }),
-    redirect("/")
-  );
+  return new Response(JSON.stringify({ message: "Success" }), {
+    status: 302,
+    // prettier-ignore
+    headers: { "Set-Cookie": token, "Location" : "/" },
+  });
 };

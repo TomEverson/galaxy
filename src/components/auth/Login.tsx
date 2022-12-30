@@ -1,6 +1,6 @@
 import { useState } from "preact/hooks";
-import { Discord } from "./Discord";
 import axios from "axios";
+import { Discord } from "./Discord";
 
 export const Login: preact.FunctionComponent = () => {
   const [email, setEmail] = useState<string>("");
