@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
-import { passwordCheck } from "../../../../../utils/password";
-import { jwtSign } from "../../../../../utils/jwt";
+import { passwordCheck } from "../../../../utils/password";
+import { jwtSign } from "../../../../utils/jwt";
 import type { APIRoute } from "astro";
 const prisma = new PrismaClient();
 

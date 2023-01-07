@@ -6,43 +6,48 @@ import { jwtSign } from "../../../../utils/jwt";
 const prisma = new PrismaClient();
 
 export const post: APIRoute = async ({ redirect }) => {
-  const url = import.meta.env.DISCORD_OAUTH_URL;
+  const url = import.meta.env.GITHUB_OAUTH_URL;
   return redirect(url);
 };
 
 export const get: APIRoute = async ({ request }) => {
   const code: string = new URL(request.url).search.slice(6);
-  const id = import.meta.env.DISCORD_CLIENT_ID;
-  const secret = import.meta.env.DISCORD_CLIENT_SECRET;
-  const params = new URLSearchParams({
-    client_id: id,
-    client_secret: secret,
-    grant_type: "authorization_code",
-    code: code.toString(),
-    redirect_uri: "http://localhost:3000/api/auth/oauth/discord",
-  });
+  const id = import.meta.env.GITHUB_CLIENT_ID;
+  const secret = import.meta.env.GITHUB_CLIENT_SECRET;
   const fetch = async () => {
     try {
       const response = await axios.post(
-        "https://discord.com/api/v10/oauth2/token",
-        params,
+        "https://github.com/login/oauth/access_token",
+        {
+          client_id: id,
+          client_secret: secret,
+          code: code,
+        },
         {
           headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Accept-Encoding": "*",
+            Accept: "application/json",
           },
         }
       );
       const { access_token } = await response.data;
-      const { data: res } = await axios.get(
-        "https://discord.com/api/v10/users/@me",
+      const { data: profile } = await axios.get("https://api.github.com/user", {
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+        },
+      });
+      const { data: mail } = await axios.get(
+        "https://api.github.com/user/emails",
         {
           headers: {
             Authorization: `Bearer ${access_token}`,
           },
         }
       );
-      return res;
+      return {
+        id: profile.id,
+        name: profile.login,
+        email: mail[0].email,
+      };
     } catch (error) {
       console.log(error);
       return new Response(JSON.stringify({ message: "Error" }), {
@@ -50,7 +55,7 @@ export const get: APIRoute = async ({ request }) => {
       });
     }
   };
-  const check = await fetch();
+  const check: any = await fetch();
   const payload = { id: check.id, email: check.email };
   const user = await prisma.user.findFirst({ where: { email: check.email } });
   const token: string = await jwtSign(payload);

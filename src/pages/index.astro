@@ -1,7 +1,7 @@
 ---
 import Head from "../layout/Head.astro";
 import MainLayout from "../layout/MainLayout.astro";
-import { jwtDecode } from "../../utils/jwt";
+import { jwtDecode } from "../utils/jwt";
 import type { User } from "@prisma/client";
 
 let user: User | undefined;

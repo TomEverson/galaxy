@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import { passwordHash } from "../../../../utils/password";
+import { passwordHash } from "../../../utils/password";
 import { PrismaClient } from "@prisma/client";
 import sgMail from "../../../../lib/sendgrid";
 const prisma = new PrismaClient();

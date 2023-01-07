@@ -1,6 +1,7 @@
 import { useState } from "preact/hooks";
 import axios from "axios";
 import { Discord } from "./Discord";
+import { Github } from "./Github";
 
 export const Login: preact.FunctionComponent = () => {
   const [email, setEmail] = useState<string>("");
@@ -75,6 +76,7 @@ export const Login: preact.FunctionComponent = () => {
                 Log In
               </button>
               <Discord />
+              <Github />
             </div>
           </div>
         </div>
