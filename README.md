@@ -27,3 +27,9 @@ If you need relational database, I recommened [Planetscale](https://planetscale.
 ## Data-Fetching
 
 [TanStack-Query](https://tanstack.com/query/v4)
+
+## Data-Validation
+
+Zod and useForm hook
+(or)
+Formik
